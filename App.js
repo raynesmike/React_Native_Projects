@@ -1,8 +1,6 @@
 import React, {useState} from 'react';
-import {Button, Text, View, TouchableOpacity} from 'react-native';
-import AsyncStorage from '@react-native-community/async-storage';
-import {DashboardScreen} from './src/screens/dashboard/DashboardScreen';
+import {TodoListScreen} from './src/screens/todolist/TodoListScreen';
 
-export const App = () => <DashboardScreen></DashboardScreen>;
+export const App = () => <TodoListScreen></TodoListScreen>;
 
 export default App;
