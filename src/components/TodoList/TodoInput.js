@@ -1,24 +1,18 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useContext, createContext} from 'react';
 import {View, Text, TextInput, Button} from 'react-native';
-import {TodoContext} from '../../context/todoContext';
+import {TodoContext} from '../../context/TodoContext';
 import {TodoItem} from './TodoItem';
+import {TodoState} from '../../context/TodoState';
 
 export const TodoInput = () => {
-  const [todo, setTodo] = useState();
-  //   const [newText, setNewText] = useState();
-  //   const {addTodo} = useContext(TodoContext);
-
-  const onChangeHandler = event => {
-    setTodo(e.target.value);
-  };
+  const [todo, setTodo] = useState('');
+  const [newText, setNewText] = useState();
+  //   const {addTodo} = useContext(TodoState);
 
   const onSubmitHandler = e => {
     e.preventDefault();
-
     const newTodo = {id: Math.random(), text: todo, complete: false};
-
-    // addTodo();
-
+    // addTodo(newTodo);
     setTodo('');
   };
 
@@ -31,11 +25,7 @@ export const TodoInput = () => {
           onChangeText={todo => setTodo(todo)}
           value={todo}></TextInput>
         <Text>{todo}</Text>
-        <Button title="add" />
-      </View>
-      <View>
-        <Text>TO-DOS</Text>
-        <TodoItem />
+        <Button title="add" onPress={onSubmitHandler} />
       </View>
     </>
   );

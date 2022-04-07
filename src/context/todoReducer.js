@@ -1,4 +1,4 @@
-import {ADD_TODO, TOGGLE_TODO, DELETE_TODO} from './todoActions';
+import {ADD_TODO, TOGGLE_TODO, DELETE_TODO} from './TodoActions';
 
 export const TodoReducer = (state, action) => {
   switch (action.type) {

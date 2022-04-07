@@ -1,14 +1,14 @@
 import React, {useReducer} from 'react';
 import {TodoContext} from './TodoContext';
-import {TodoReducer} from './todoReducer';
-import {ADD_TODO, TOGGLE_TODO, DELETE_TODO} from './todoActions';
+import {TodoReducer} from './TodoReducer';
+import {ADD_TODO, TOGGLE_TODO, DELETE_TODO} from './TodoActions';
 
 export const TodoState = props => {
   const initialState = {
     todos: [],
   };
 
-  const [action, dispatch] = useReducer(todoReducer, initialState);
+  const [state, dispatch] = useReducer(TodoReducer, initialState);
 
   //ADD TODO
   const addTodo = todo => {
@@ -35,12 +35,14 @@ export const TodoState = props => {
   };
 
   return (
-    <TodoContext
+    <TodoContext.Provider
       value={{
         todos: state.todos,
         addTodo,
         toggleTodo,
         deleteTodo,
-      }}></TodoContext>
+      }}>
+      {props.children}
+    </TodoContext.Provider>
   );
 };
