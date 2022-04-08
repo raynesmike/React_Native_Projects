@@ -3,16 +3,25 @@ import {View, Text, TextInput, Button} from 'react-native';
 import {TodoContext} from '../../context/TodoContext';
 import {TodoItem} from './TodoItem';
 import {TodoState} from '../../context/TodoState';
+import {set} from 'react-native-reanimated';
 
 export const TodoInput = () => {
   const [todo, setTodo] = useState('');
   const [newText, setNewText] = useState();
-  //   const {addTodo} = useContext(TodoState);
+  const {addTodo} = useContext(TodoContext);
+
+  const onSetTodo = e => {
+    setTodo(e);
+  };
 
   const onSubmitHandler = e => {
     e.preventDefault();
-    const newTodo = {id: Math.random(), text: todo, complete: false};
-    // addTodo(newTodo);
+    const newTodo = {
+      id: Math.floor(Math.random() * 100),
+      text: todo,
+      complete: false,
+    };
+    addTodo(newTodo);
     setTodo('');
   };
 
@@ -22,7 +31,7 @@ export const TodoInput = () => {
         <TextInput
           style={{height: 40, borderColor: 'black', borderWidth: 5}}
           placeholder="Enter Todo"
-          onChangeText={todo => setTodo(todo)}
+          onChangeText={onSetTodo}
           value={todo}></TextInput>
         <Text>{todo}</Text>
         <Button title="add" onPress={onSubmitHandler} />
