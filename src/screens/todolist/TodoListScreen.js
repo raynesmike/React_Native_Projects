@@ -7,7 +7,6 @@ import {TodoContext} from '../../context/TodoContext';
 
 export const TodoListScreen = () => {
   const {todos, toggleTodo, deleteTodo} = useContext(TodoContext);
-  console.log(todos);
 
   return (
     <View style={{borderColor: 'black', borderWidth: 5, padding: 5}}>
